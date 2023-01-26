@@ -63,7 +63,6 @@ function CarouselPkmnImg({ content, onChangePokemon }: CarouselPkmnProps) {
                 </div>
             </div>
             <Button onClick={() => doNext()} style={{ visibility: hidden ? 'hidden' : 'visible' }}><RightOutlined /></Button>
-
         </div >
     );
 };
