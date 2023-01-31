@@ -1,11 +1,12 @@
 import React from 'react';
-import { createBrowserRouter, RouterProvider} from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './App.css';
 import PokeLayout from './views/PokeLayout';
 import ListePkmn from './components/ListePkmn';
 
 import FilteringByType from './components/FilteringByType';
 import FilteringByGen from './components/FilteringByGen';
+import FilteringByUser from './components/FilteringByUser';
 
 const router = createBrowserRouter([
   {
@@ -13,7 +14,7 @@ const router = createBrowserRouter([
     element: <PokeLayout />,
     children: [{
       path: "",
-      element: <ListePkmn/>,
+      element: <ListePkmn />,
     },
     {
       path: "/filteredType",
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
     {
       path: "/filteredGen",
       element: <FilteringByGen />
+    },
+    {
+      path: "/filteredUser",
+      element: <FilteringByUser />
     }]
   }
 ]);

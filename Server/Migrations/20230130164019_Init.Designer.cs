@@ -11,8 +11,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace server.Migrations
 {
     [DbContext(typeof(PokeDbContext))]
-    [Migration("20230130133537_ManytomanyOopsie")]
-    partial class ManytomanyOopsie
+    [Migration("20230130164019_Init")]
+    partial class Init
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -27,53 +27,65 @@ namespace server.Migrations
             modelBuilder.Entity("UserPokemon", b =>
                 {
                     b.Property<Guid>("UserId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("userid");
 
                     b.Property<Guid>("PokemonId")
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("pokemonid");
 
-                    b.HasKey("UserId", "PokemonId");
+                    b.HasKey("UserId", "PokemonId")
+                        .HasName("pk_userpokemons");
 
-                    b.HasIndex("PokemonId");
+                    b.HasIndex("PokemonId")
+                        .HasDatabaseName("ix_userpokemons_pokemonid");
 
-                    b.ToTable("UserPokemon");
+                    b.ToTable("userpokemons", (string)null);
                 });
 
             modelBuilder.Entity("server.models.Pokemon", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("name");
 
                     b.Property<int>("NoPokedex")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("nopokedex");
 
                     b.Property<string>("Url")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("url");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_pokemons");
 
-                    b.ToTable("Pokemons");
+                    b.ToTable("pokemons", (string)null);
                 });
 
             modelBuilder.Entity("server.models.User", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
+                        .HasColumnType("uuid")
+                        .HasColumnName("id");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("text")
+                        .HasColumnName("name");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("pk_users");
 
-                    b.ToTable("Users");
+                    b.ToTable("users", (string)null);
                 });
 
             modelBuilder.Entity("UserPokemon", b =>
@@ -82,13 +94,15 @@ namespace server.Migrations
                         .WithMany("Pokemons")
                         .HasForeignKey("PokemonId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("fk_userpokemons_users_userid");
 
                     b.HasOne("server.models.Pokemon", "Pokemon")
                         .WithMany("Users")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .IsRequired()
+                        .HasConstraintName("fk_userpokemons_pokemons_pokemonid");
 
                     b.Navigation("Pokemon");
 

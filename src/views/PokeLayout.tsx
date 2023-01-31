@@ -41,7 +41,8 @@ function PokeLayout() {
     const items: MenuProps['items'] = [
         getItem('All', 'sub1',() => navigate("/") ,<DashOutlined />),
         getItem('ByType', 'sub2',() => navigate("/filteredType"), <DashOutlined />),
-        getItem('ByGen', 'sub3',() => navigate("/filteredGen"), <DashOutlined />)
+        getItem('ByGen', 'sub3',() => navigate("/filteredGen"), <DashOutlined />),
+        getItem('ByUser', 'sub4', () => navigate("/filteredUser"), <DashOutlined/> )
     ];
 
     return (

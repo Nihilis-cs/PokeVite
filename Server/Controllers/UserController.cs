@@ -15,9 +15,9 @@ public class UserController : ControllerBase
 {
     private readonly IMediator _Mediator;
 
-    public UserController(IMediator aMediatior)
+    public UserController(IMediator aMediator)
     {
-        _Mediator = aMediatior;
+        _Mediator = aMediator;
     }
 
     [HttpPost("new")]

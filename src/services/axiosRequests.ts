@@ -1,6 +1,6 @@
 import axios from "axios";
 
-import { GenResultDto, ResultDto, TypeResultDto } from "../type/dto.type";
+import { GenResultDto, PokeDto, ResultDto, TypeResultDto, UserDto } from "../type/dto.type";
 import { idFromUrl } from "./stringFunctions";
 
 
@@ -53,5 +53,18 @@ async function getGens(){
 export const byGen = {
     listByGen,
     getGens    
+}
+
+async function getUsers() {
+    var vRet = await axios.get<UserDto[]>("https://localhost:5001/User/all")
+    return vRet.data;
+}
+async function listByUser(aUserId: string){
+    var vRet = await axios.get<PokeDto[]>("https://localhost:5001/Pokemon/" + aUserId);
+    return vRet.data;
+}
+export const byUser = {
+    listByUser,
+    getUsers    
 }
 

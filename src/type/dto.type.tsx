@@ -75,3 +75,8 @@ export type ListDto = {
 export type VarietiesDto = {
     pokemon: PokeDto;
 }
+
+export type UserDto = {
+    name: string;
+    id: string;
+}

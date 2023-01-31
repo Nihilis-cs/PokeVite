@@ -1,10 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "7LHNQolY4pVg8DN5SAOmbuzct9wNX1peGhG6ZGia8Tm+1IRhlyY5KH7M/pa5g8ZKUIWLrb6aC+PLfnIFfOURCw==",
+  "dgSpecHash": "yy7BcddubLAuueHYCYExcPcFrJsTK2cse4yXwwtTLnc33YOdbXLO1W+n5Ah/0uqgTiv5NZbZFX1Y1olt9sPKRg==",
   "success": true,
   "projectFilePath": "C:\\Users\\n.delhaye-boloh\\Sources\\TestReact\\pokevite\\Server\\server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\n.delhaye-boloh\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512",
+    "C:\\Users\\n.delhaye-boloh\\.nuget\\packages\\efcore.namingconventions\\7.0.2\\efcore.namingconventions.7.0.2.nupkg.sha512",
     "C:\\Users\\n.delhaye-boloh\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\n.delhaye-boloh\\.nuget\\packages\\mediatr\\11.1.0\\mediatr.11.1.0.nupkg.sha512",
     "C:\\Users\\n.delhaye-boloh\\.nuget\\packages\\mediatr.contracts\\1.0.1\\mediatr.contracts.1.0.1.nupkg.sha512",

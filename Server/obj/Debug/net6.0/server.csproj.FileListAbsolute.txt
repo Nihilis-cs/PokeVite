@@ -52,3 +52,4 @@ C:\Users\n.delhaye-boloh\Sources\TestReact\pokevite\Server\obj\Debug\net6.0\serv
 C:\Users\n.delhaye-boloh\Sources\TestReact\pokevite\Server\obj\Debug\net6.0\ref\server.dll
 C:\Users\n.delhaye-boloh\Sources\TestReact\pokevite\Server\bin\Debug\net6.0\Dapper.dll
 C:\Users\n.delhaye-boloh\Sources\TestReact\pokevite\Server\bin\Debug\net6.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\n.delhaye-boloh\Sources\TestReact\pokevite\Server\bin\Debug\net6.0\EFCore.NamingConventions.dll
