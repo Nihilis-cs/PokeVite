@@ -1,6 +1,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using server.Commands;
+using server.models.DTO;
 using server.Models.DTO;
 using server.Queries;
 
@@ -19,9 +20,9 @@ public class PokemonController : ControllerBase
     }
 
     [HttpPost("new")]
-    public async Task<IActionResult> createUserPokemon([FromBody] UserPokemonDto aUserPkmnDto)
+    public async Task<IActionResult> createPokemon([FromBody] PokeDto aPoke)
     {
-        var vResult = await _Mediator.Send(new AddUserPokemonCommand { UserPokemon = aUserPkmnDto });
+        var vResult = await _Mediator.Send(new AddPokemonCommand { Pokemon = aPoke });
         return Ok(vResult);
     }
 
@@ -31,6 +32,15 @@ public class PokemonController : ControllerBase
         var vResult = await _Mediator.Send(new GetAllPokemonByUserQuery(id));
         return Ok(vResult);
     }
+
+
+
+    // [HttpPost("newlist")]
+    // public async Task<IActionResult> createPokemon([FromBody] PokeDto[] aPoke)
+    // {
+    //     var vResult = await _Mediator.Send(new AddListPokemonCommand { Pokemon = aPoke });
+    //     return Ok(vResult);
+    // }
 
 
 }

@@ -7,6 +7,8 @@ import ListePkmn from './components/ListePkmn';
 import FilteringByType from './components/FilteringByType';
 import FilteringByGen from './components/FilteringByGen';
 import FilteringByUser from './components/FilteringByUser';
+import Tests from './components/Tests';
+import DetailsList from './components/DetailsList';
 
 const router = createBrowserRouter([
   {
@@ -27,7 +29,17 @@ const router = createBrowserRouter([
     {
       path: "/filteredUser",
       element: <FilteringByUser />
-    }]
+    },
+    {
+      path:"/tests",
+      element: <Tests />
+    },
+    {
+      path:"/collection/:colid",
+      element: <DetailsList />
+    }
+  ]
+
   }
 ]);
 

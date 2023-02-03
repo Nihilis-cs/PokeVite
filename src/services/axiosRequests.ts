@@ -1,16 +1,34 @@
 import axios from "axios";
 
-import { GenResultDto, PokeDto, ResultDto, TypeResultDto, UserDto } from "../type/dto.type";
+import { CollectionDto, CollectionFullDto, GenResultDto, PokeDto, ResultDto, TypeResultDto, UserDto } from "../type/dto.type";
 import { idFromUrl } from "./stringFunctions";
 
+export const all = {
+    listAll
+}
+export const byType = {
+    listByType,
+    getTypes
+}
+export const byGen = {
+    listByGen,
+    getGens    
+}
+export const byUser = {
+    listByUser,
+    getUsers    
+}
+export const collections = {
+    createCollection,
+    listCollectionByUser,
+    collectionById,
+    updateCollection,
+}
 
 //Lists 
 async function listAll(offset: number, itemsPerPage: number) {
     var vRet = await axios.get<ResultDto>("https://pokeapi.co/api/v2/pokemon-species/?limit=" + itemsPerPage + "&offset=" + offset);
     return vRet.data;
-}
-export const all = {
-    listAll
 }
 
 async function listByType(type : string) {
@@ -33,10 +51,6 @@ async function getTypes() {
     return vRet;
 }
 
-export const byType = {
-    listByType,
-    getTypes
-}
 
 async function listByGen(generation : number) {
     var vGen = await axios.get<GenResultDto>("https://pokeapi.co/api/v2/generation/" + generation);
@@ -50,21 +64,30 @@ async function getGens(){
     return vRet.data;
 }
 
-export const byGen = {
-    listByGen,
-    getGens    
-}
 
 async function getUsers() {
-    var vRet = await axios.get<UserDto[]>("https://localhost:5001/User/all")
+    var vRet = await axios.get<UserDto[]>("https://localhost:5001/User/all");
     return vRet.data;
 }
 async function listByUser(aUserId: string){
     var vRet = await axios.get<PokeDto[]>("https://localhost:5001/Pokemon/" + aUserId);
     return vRet.data;
 }
-export const byUser = {
-    listByUser,
-    getUsers    
+
+async function createCollection(aDto: CollectionDto){
+    var vRet = await axios.post<CollectionDto>('https://localhost:5001/Collection/new', aDto);
+    return vRet.data;
+}
+async function listCollectionByUser(aUserId : string){
+    var vRet = await axios.get('https://localhost:5001/Collection/all/?userId=' + aUserId);
+    return vRet.data;
+}
+async function collectionById(aColId? : string)
+{
+    var vRet = await axios.get('https://localhost:5001/Collection/' + aColId);
+    return vRet.data;
+}
+async function updateCollection(aCollection: CollectionFullDto) {
+    
 }
 

@@ -7,4 +7,5 @@ public class Pokemon
     public int NoPokedex {get; set;}
     public Guid Id {get; set;}
     public ICollection<UserPokemon>? Users {get; set;}
+    public ICollection<CollectionPokemon>? Collections {get; set;}
 }

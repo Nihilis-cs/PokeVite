@@ -42,7 +42,8 @@ function PokeLayout() {
         getItem('All', 'sub1',() => navigate("/") ,<DashOutlined />),
         getItem('ByType', 'sub2',() => navigate("/filteredType"), <DashOutlined />),
         getItem('ByGen', 'sub3',() => navigate("/filteredGen"), <DashOutlined />),
-        getItem('ByUser', 'sub4', () => navigate("/filteredUser"), <DashOutlined/> )
+        getItem('ByUser', 'sub4', () => navigate("/filteredUser"), <DashOutlined/> ),
+        getItem('PageTests', 'sub5', () => navigate("/tests"), <DashOutlined/>)
     ];
 
     return (
@@ -55,7 +56,7 @@ function PokeLayout() {
                 />
             </div>
             <Layout.Header>
-                <Image src="./public/pokeapi.png" preview={false} width={`15em`} style={{ transform: `translateX(${move * 390}px)` }} className="z-[3000] transition delay-100 duration-300 " />
+                <Image src="/pokeapi.png" preview={false} width={`15em`} style={{ transform: `translateX(${move * 390}px)` }} className="z-[3000] transition delay-100 duration-300 " />
             </Layout.Header>
             <Layout.Content className="pt-6 px-12 h-full">
                 <Layout className="h-full">

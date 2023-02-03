@@ -11,13 +11,13 @@ export type ResultDto = {
 export type TypeResultDto = {
     name: string;
     pokemon: [
-        {pokemon: PokeDto}
+        { pokemon: PokeDto }
     ];
 }
 
 export type GenResultDto = {
     main_region: DetailsDto;
-    id : number;
+    id: number;
     pokemon_species: PokeDto[];
 }
 
@@ -79,4 +79,23 @@ export type VarietiesDto = {
 export type UserDto = {
     name: string;
     id: string;
+}
+
+export type CollectionDto = {
+    name: string;
+    description: string;
+    userId: string;
+}
+export type CollectionIdDto = {
+    name: string;
+    description: string;
+    userId: string;
+    colId: string;
+}
+export type CollectionFullDto = {
+    name: string;
+    description: string;
+    userId: string;
+    colId: string;
+    pokemons: PokeDto[];
 }

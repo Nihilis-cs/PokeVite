@@ -21,6 +21,7 @@ function FilteredList({ pokemons }: FilteredListProps) {
             <div className='relative flex-grow'>
                 <div className='absolute inset-0 w-full h-full overflow-auto'>
                     <div className='grid gap-2 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 bg-gray-100'>
+                        {pokemons?.results.length == 0 && <h1>No pokemons here</h1>}
                         {pokemons?.results.map(item => {
                             return (
                                 <CardPkmn key={item.name} pokemon={item} onOpenPokemon={(id) => {

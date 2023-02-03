@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -10,9 +11,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace server.Migrations
 {
     [DbContext(typeof(PokeDbContext))]
-    partial class PokeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230202081357_Collections")]
+    partial class Collections
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,10 +50,6 @@ namespace server.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("id");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("text")
-                        .HasColumnName("description");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("text")
@@ -61,12 +60,12 @@ namespace server.Migrations
                         .HasColumnName("userid");
 
                     b.HasKey("Id")
-                        .HasName("pk_collections");
+                        .HasName("pk_collection");
 
                     b.HasIndex("UserId")
-                        .HasDatabaseName("ix_collections_userid");
+                        .HasDatabaseName("ix_collection_userid");
 
-                    b.ToTable("collections", (string)null);
+                    b.ToTable("collection", (string)null);
                 });
 
             modelBuilder.Entity("server.models.CollectionPokemon", b =>
@@ -80,12 +79,12 @@ namespace server.Migrations
                         .HasColumnName("pokemonid");
 
                     b.HasKey("CollectionId", "PokemonId")
-                        .HasName("pk_collectionpokemons");
+                        .HasName("pk_collectionpokemon");
 
                     b.HasIndex("PokemonId")
-                        .HasDatabaseName("ix_collectionpokemons_pokemonid");
+                        .HasDatabaseName("ix_collectionpokemon_pokemonid");
 
-                    b.ToTable("collectionpokemons", (string)null);
+                    b.ToTable("collectionpokemon", (string)null);
                 });
 
             modelBuilder.Entity("server.models.Pokemon", b =>
@@ -161,7 +160,7 @@ namespace server.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_collections_users_userid");
+                        .HasConstraintName("fk_collection_users_userid");
 
                     b.Navigation("User");
                 });
@@ -173,14 +172,14 @@ namespace server.Migrations
                         .HasForeignKey("CollectionId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_collectionpokemons_collections_collectionid");
+                        .HasConstraintName("fk_collectionpokemon_collection_collectionid");
 
                     b.HasOne("server.models.Pokemon", "Pokemon")
                         .WithMany("Collections")
                         .HasForeignKey("PokemonId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
-                        .HasConstraintName("fk_collectionpokemons_pokemons_pokemonid");
+                        .HasConstraintName("fk_collectionpokemon_pokemons_pokemonid");
 
                     b.Navigation("Collection");
 
