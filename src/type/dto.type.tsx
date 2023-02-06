@@ -99,3 +99,8 @@ export type CollectionFullDto = {
     colId: string;
     pokemons: PokeDto[];
 }
+export type CollectionPokemonDto = {
+    pokemonName : string;
+    collectionId: string;
+    userId: string;
+}

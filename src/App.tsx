@@ -2,12 +2,12 @@ import React from 'react';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import './App.css';
 import PokeLayout from './views/PokeLayout';
-import ListePkmn from './components/ListePkmn';
+import ListePkmn from './pages/ListePkmn';
 
-import FilteringByType from './components/FilteringByType';
-import FilteringByGen from './components/FilteringByGen';
-import FilteringByUser from './components/FilteringByUser';
-import Tests from './components/Tests';
+import FilteringByType from './pages/FilteringByType';
+import FilteringByGen from './pages/FilteringByGen';
+import FilteringByUser from './pages/FilteringByUser';
+import Tests from './pages/Tests';
 import DetailsList from './components/DetailsList';
 
 const router = createBrowserRouter([

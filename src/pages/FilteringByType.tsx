@@ -4,7 +4,7 @@ import type { SelectProps } from 'antd';
 import { useState } from "react";
 import { all, byGen, byType } from "../services/axiosRequests";
 import { PokeDto, ResultDto } from "../type/dto.type";
-import FilteredList from "./FilteredList";
+import FilteredList from "../components/FilteredList";
 import { idFromUrl } from "../services/stringFunctions";
 import { inner } from "../services/arrayFunctions";
 import { DefaultOptionType } from "antd/es/select";

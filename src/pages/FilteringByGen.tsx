@@ -3,7 +3,7 @@ import { Select, Spin } from "antd";
 import { useState } from "react";
 import { byGen } from "../services/axiosRequests";
 import { ResultDto } from "../type/dto.type";
-import FilteredList from "./FilteredList";
+import FilteredList from "../components/FilteredList";
 import { DefaultOptionType } from "antd/es/select";
 import { idFromUrl } from "../services/stringFunctions";
 

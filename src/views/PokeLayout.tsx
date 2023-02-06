@@ -75,9 +75,7 @@ function PokeLayout() {
                             style={{ height: '100%' }}
                             items={items} />
                     </Drawer>
-
                     <Layout.Content >
-
                         <Outlet />
                     </Layout.Content>
                 </Layout>

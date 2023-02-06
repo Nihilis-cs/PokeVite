@@ -1,8 +1,8 @@
 import { Button } from "antd";
 import axios from "axios";
 import { all } from "../services/axiosRequests";
-import CollectionList from "./CollectionList";
-import AddCollectionForm from "./forms/AddCollectionForm";
+import CollectionList from "../components/CollectionList";
+import AddCollectionForm from "../components/forms/AddCollectionForm";
 
 function Tests() {
 

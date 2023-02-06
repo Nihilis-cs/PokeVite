@@ -1,7 +1,10 @@
+using System;
+using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using server.Commands;
 using server.models.DTO;
+using server.Models.DTO;
 using server.Queries;
 
 namespace server.Controllers;
@@ -36,6 +39,13 @@ public class CollectionController : ControllerBase
     public async Task<IActionResult> getCollectionById(string id)
     {
         var vResult = await _Mediator.Send(new GetCollectionQuery(id));
+        return Ok(vResult);
+    }
+
+    [HttpPost("pokemon/add")]
+    public async Task<IActionResult> addPkmnToCollection([FromBody] AddPokemonToCollectionDto aPost)
+    {
+        var vResult = await _Mediator.Send(new AddPokemonToCollectionCommand{ Dto =  aPost});
         return Ok(vResult);
     }
 

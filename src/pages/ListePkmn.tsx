@@ -4,9 +4,9 @@ import axios from 'axios';
 import { useState } from 'react';
 import { all } from '../services/axiosRequests';
 import { ResultDto } from '../type/dto.type';
-import CardPkmn from './CardPkmn';
-import DetailsPkmn from './DetailsPkmn';
-import FilteredList from './FilteredList';
+import CardPkmn from '../components/CardPkmn';
+import DetailsPkmn from '../components/DetailsPkmn';
+import FilteredList from '../components/FilteredList';
 
 interface FilterPokemom {
     page: number;
