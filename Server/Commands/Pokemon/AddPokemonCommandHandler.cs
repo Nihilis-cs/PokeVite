@@ -40,28 +40,29 @@ public class AddPokemonCommandHandler : IRequestHandler<AddPokemonCommand, strin
     }
 }
 
-// public class AddListPokemonCommandHandler : IRequestHandler<AddListPokemonCommand, int>
-// {
-//     private readonly PokeDbContext _DbContext;
-//     public AddListPokemonCommandHandler(PokeDbContext aDbContext)
-//     {
-//         _DbContext = aDbContext;
-//     }
-//     public async Task<int> Handle(AddListPokemonCommand request, CancellationToken cancellationToken)
-//     {
-//         var vDto = request.Pokemon;
-//         var Pokedex = 0;
-//         foreach (var poke in vDto)
-//         {
-//             Pokedex++;
-//             await _DbContext.Pokemons.AddAsync(new Pokemon
-//             {
-//                 Name = poke.Name,
-//                 Url = poke.Url!,
-//                 NoPokedex = Pokedex
-//             });
-//         }
-//         var vRet = await _DbContext.SaveChangesAsync();
-//         return vRet;
-//     }
-// }
+public class AddListPokemonCommandHandler : IRequestHandler<AddListPokemonCommand, int>
+{
+    private readonly PokeDbContext _DbContext;
+    public AddListPokemonCommandHandler(PokeDbContext aDbContext)
+    {
+        _DbContext = aDbContext;
+    }
+    public async Task<int> Handle(AddListPokemonCommand request, CancellationToken cancellationToken)
+    {
+        var vDto = request.Pokemon;
+        var Pokedex = 0;
+        foreach (var poke in vDto)
+        {
+            Pokedex++;
+            await _DbContext.Pokemons.AddAsync(new Pokemon
+            {
+                Name = poke.Name,
+                Url = poke.Url!,
+                NoPokedex = Pokedex,
+                Id = Guid.NewGuid().ToString()
+            });
+        }
+        var vRet = await _DbContext.SaveChangesAsync();
+        return vRet;
+    }
+}

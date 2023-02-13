@@ -15,7 +15,7 @@ public class CreateCollectionCommandHandler : IRequestHandler<CreateCollectionCo
     public async Task<string> Handle(CreateCollectionCommand request, CancellationToken cancellationToken)
     {
         var vDto = request.Collection;
-        var vUser = await _DbContext.Users.Where(u => u.Id == new Guid(vDto.UserId)).FirstAsync();
+        var vUser = await _DbContext.Users.Where(u => u.Id == vDto.UserId).FirstAsync();
 
         var vNewCollection = new Collection(){Name = vDto.Name, Description = vDto.Description, User = vUser};
         await _DbContext.Collections.AddAsync(vNewCollection);

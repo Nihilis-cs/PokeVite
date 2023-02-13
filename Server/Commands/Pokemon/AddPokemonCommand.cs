@@ -9,7 +9,7 @@ public class AddPokemonCommand : IRequest<string>
     public PokeDto Pokemon { get; set; } = null!;
 }
 
-// public class AddListPokemonCommand : IRequest<int>
-// {
-//     public PokeDto[] Pokemon { get; set; } = null!;
-// }
+public class AddListPokemonCommand : IRequest<int>
+{
+    public PokeDto[] Pokemon { get; set; } = null!;
+}

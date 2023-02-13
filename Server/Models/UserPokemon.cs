@@ -3,8 +3,8 @@ using server.models;
 
 public class UserPokemon
 {
-    public Guid PokemonId{get; set;}
+    public string PokemonId{get; set;}
     public Pokemon Pokemon{get; set;} = null!;
-    public Guid UserId {get; set;}
+    public string UserId {get; set;}
     public User User {get; set;} = null!;
 }

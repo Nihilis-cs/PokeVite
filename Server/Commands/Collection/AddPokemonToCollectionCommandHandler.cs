@@ -16,7 +16,7 @@ public class AddPokemonToCollectionCommandHandler : IRequestHandler<AddPokemonTo
     {
         var vDto = request.Dto;
         var vPkmn = await _DbContext.Pokemons.Where(p => p.Name == vDto.pokemonName).FirstAsync();
-        var vCollection = await _DbContext.Collections.Where(c => c.Id == new Guid(vDto.collectionId)).FirstAsync();
+        var vCollection = await _DbContext.Collections.Where(c => c.Id == vDto.collectionId).FirstAsync();
         var vNewPokeCol = new CollectionPokemon(){PokemonId = vPkmn.Id, Pokemon = vPkmn, CollectionId = vCollection.Id, Collection = vCollection};
         await _DbContext.CollectionPokemons.AddAsync(vNewPokeCol);
         var vRes = await _DbContext.SaveChangesAsync();

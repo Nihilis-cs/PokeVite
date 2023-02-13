@@ -1,8 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using MediatR;
 using server.configuration;
-using server.Commands;
 using System.Reflection;
+using server.Models;
+using server.models;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,6 +15,16 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCors();
+
+var vAuthSettings = builder.Configuration.GetSection("AuthSettings").Get<AuthSettings>();
+builder.Services.AddSingleton(vAuthSettings); //
+
+builder.Services.AddIdentity<User, Role>(options =>
+{
+    options.Password.RequireDigit = false;
+    options.Password.RequireUppercase = false;
+    options.Password.RequiredLength = 5;
+}).AddEntityFrameworkStores<PokeDbContext>().AddRoles<Role>().AddDefaultTokenProviders();
 
 builder.Services.AddDbContext<PokeDbContext>(options =>
             options.UseNpgsql(Configuration.GetConnectionString(builder.Configuration)).UseLowerCaseNamingConvention());
